@@ -1,0 +1,39 @@
+@model List<Break>
+
+<h2>Breaks</h2>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Is Recurrent</th>
+            <th>Notes</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.BreakId</td>
+                <td>@item.StartTime</td>
+                <td>@item.EndTime</td>
+                <td>@item.IsRecurrent</td>
+                <td>@item.Notes</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No breaks available.</p>
+}
+
+<div class="btn-container">
+    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Back to Home</a>
+    <a asp-controller="Breaks" asp-action="Create" class="btn btn-primary">Add Break</a>
+</div>

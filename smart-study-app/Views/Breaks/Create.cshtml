@@ -1,0 +1,50 @@
+@model Break
+
+@{
+    ViewData["Title"] = "Create Break";
+}
+
+<h1>Break</h1>
+
+<h4>Create New</h4>
+<hr/>
+<div class="row">
+    <div>
+        <form asp-action="Create">
+            <div class="form-group">
+                <label asp-for="StartTime" class="control-label">Start Time</label>
+                <input asp-for="StartTime" class="form-control"/>
+                <span asp-validation-for="StartTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndTime" class="control-label">End Time</label>
+                <input asp-for="EndTime" class="form-control"/>
+                <span asp-validation-for="EndTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notes" class="control-label">Notes</label>
+                <textarea asp-for="Notes" class="form-control"></textarea>
+                <span asp-validation-for="Notes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label" asp-for="IsRecurrent">Is Recurrent</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" asp-for="IsRecurrent" value="true">
+                </div>
+                <span asp-validation-for="IsRecurrent" class="text-danger"></span>
+            </div>
+            <div class="btn-container">
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary"/>
+                </div>
+                <div>
+                    <a asp-controller="Sessions" asp-action="Index" class="btn btn-secondary">Back to Sessions</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

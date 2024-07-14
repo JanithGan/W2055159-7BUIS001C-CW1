@@ -1,0 +1,75 @@
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    font-size: 14px;
+}
+
+html,
+body {
+    height: 100vh;
+    margin: 0;
+}
+
+.box {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+
+.box header {
+    flex: 0 1 auto;
+}
+
+.box .main-body {
+    flex: 1 1 auto;
+    align-content: center;
+    margin: 20px;
+}
+
+.box footer {
+    flex: 0 1 40px;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+.btn-container {
+    display: flex;
+    margin-top: 50px;
+    column-gap: 20px;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+dt,
+.control-label {
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.tab-content {
+    min-height: 300px;
+    margin-top: 50px;
+}
+
+footer {
+    margin-left: 20px;
+}
+
+h1, h2 {
+    margin-bottom: 20px;
+}
+
+.tabbed-div {
+    margin-top: 30px;
+}

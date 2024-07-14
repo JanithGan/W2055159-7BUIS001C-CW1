@@ -1,0 +1,32 @@
+@model Student
+
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<h1>Profile</h1>
+
+<div>
+    <h4>Student Information</h4>
+    <hr/>
+    <dl class="row">
+        <dt class="col-sm-3">Name</dt>
+        <dd class="col-sm-10">@Model.Name</dd>
+        <dt class="col-sm-3">Student Number</dt>
+        <dd class="col-sm-10">@Model.StudentNumber</dd>
+        <dt class="col-sm-3">Enrolled Modules</dt>
+        <dd class="mt-1">
+            <ul class="list-group">
+                @foreach (var module in ViewBag.EnrolledModules)
+                {
+                    <li class="list-group-item">@module.Name (@module.ModuleCode)</li>
+                }
+            </ul>
+        </dd>
+    </dl>
+</div>
+
+<div class="btn-container">
+    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Back to Home</a>
+    <a asp-controller="Profile" asp-action="Edit" class="btn btn-primary">Edit Profile</a>
+</div>

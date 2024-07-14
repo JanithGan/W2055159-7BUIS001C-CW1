@@ -1,0 +1,41 @@
+@model List<StudySession>
+
+<h1>Study Sessions</h1>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Module Code</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Is Recurrent</th>
+            <th>Notes</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var session in Model)
+        {
+            <tr>
+                <td>@session.SessionId</td>
+                <td>@session.ModuleCode</td>
+                <td>@session.StartTime</td>
+                <td>@session.EndTime</td>
+                <td>@session.IsRecurrent</td>
+                <td>@session.Notes</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No study sessions available.</p>
+}
+
+<div class="btn-container">
+    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Back to Home</a>
+    <a asp-controller="StudySessions" asp-action="Create" class="btn btn-primary">Add Study Session</a>
+</div>

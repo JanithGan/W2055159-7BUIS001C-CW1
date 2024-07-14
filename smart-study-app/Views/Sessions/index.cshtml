@@ -1,0 +1,47 @@
+@{
+    ViewData["Title"] = "Sessions";
+}
+
+<div>
+    <h1>Sessions</h1>
+
+    <a asp-action="ExportReport" class="btn btn-secondary">Export Report (CSV)</a>
+</div>
+
+<div class="tabbed-div">
+    <ul class="nav nav-tabs" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <li class="nav-item">
+            <a class="nav-link active" id="study-sessions-tab" data-toggle="tab" href="#study-sessions"
+               role="tab" aria-controls="study-sessions" aria-selected="true">
+                Study Sessions
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="breaks-tab" data-toggle="tab" href="#breaks"
+               role="tab" aria-controls="breaks" aria-selected="true">
+                Breaks
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content" id="tabContent">
+        <div class="tab-pane fade show active" id="study-sessions" role="tabpanel" aria-labelledby="study-sessions-tab">
+            <!-- Render Study Sessions partial view -->
+            <partial name="_StudySessions" model="@ViewBag.StudySessions"/>
+        </div>
+        <div class="tab-pane fade" id="breaks" role="tabpanel" aria-labelledby="breaks-tab">
+            <!-- Render Breaks partial view -->
+            <partial name="_Breaks" model="@ViewBag.Breaks"/>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+    $(document).ready(function () {
+        $('.nav-tabs a').on('click', function (e) {
+            e.preventDefault();
+            $(this).tab('show');
+        });
+    });
+</script>
+}

@@ -1,0 +1,54 @@
+@model Student
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit Profile</h1>
+
+<h4>Student Information</h4>
+<hr/>
+
+<div class="row">
+    <div>
+        <form asp-action="Edit">
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control"/>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StudentNumber" class="control-label">Student Number</label>
+                <input asp-for="StudentNumber" class="form-control" readonly/>
+                <span asp-validation-for="StudentNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label" asp-for="EnrolledModuleCodes">Select Modules</label>
+                @foreach (var module in ViewBag.Modules)
+                {
+                    <div class="form-check">
+                        <input class="form-check-input" name="EnrolledModuleCodes" type="checkbox"
+                               value=@module.ModuleCode id="flexCheckDefault"
+                               @(Model.EnrolledModuleCodes.Contains(module.ModuleCode) ? "checked" : "")>
+                        <label class="form-check-label" for="flexCheckDefault">
+                            @module.Name (@module.ModuleCode)
+                        </label>
+                    </div>
+                }
+            </div>
+            <div class="btn-container">
+                <div class="form-group">
+                    <input type="hidden" asp-for="StudentId"/>
+                    <input type="submit" value="Save" class="btn btn-primary"/>
+                </div>
+                <div>
+                    <a asp-controller="Profile" asp-action="Index" class="btn btn-secondary">Back to Profile</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
